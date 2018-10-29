@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:08:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/28 17:20:01 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/28 20:50:54 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef	struct		s_piece
 
 typedef struct		s_fillit
 {
-	t_piece	*list;
+	t_piece	**list;
 	int		count;
 	char	**result;
 	int		size;
