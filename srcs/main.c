@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/29 20:11:04 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 10:34:40 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,7 @@ int		get_pieces(t_fillit *fill, int fd)
 			return (-1);
 		piece->placed = 0;
 		if (get_piece(fill, fd, line, piece) == -1)
-		{
-			printf("given piece was invalid\n");
 			return (-1);
-		}
 		if (check_piece(fill, fill->list[fill->count]) == -1)
 			return (-1);
 		fill->count++;
@@ -141,5 +138,7 @@ int		main(int argc, char **argv)
 	close(fd);
 	if (check_all(&fill) == -1)
 		return (-1);
+	fill.result = malloc_map(fill.result, 2);
+	algo(&fill, fill.result, fill.list, 2, 0);
 	return (1);
 }

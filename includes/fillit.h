@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:08:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/29 21:44:37 by dcordova         ###   ########.fr       */
+/*   Updated: 2018/10/30 10:34:32 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <libft.h>
 
-typedef	struct		s_piece
+typedef	struct	s_piece
 {
 	char	**map;
 	int		placed;
@@ -23,15 +23,19 @@ typedef	struct		s_piece
 	int		height;
 	int		y;
 	int		x;
-}					t_piece;
+}				t_piece;
 
-typedef struct		s_fillit
+typedef struct	s_fillit
 {
 	t_piece	**list;
 	int		count;
 	char	**result;
 	int		size;
-}					t_fillit;
+}				t_fillit;
 
-int					piece_stats(t_fillit *fill);
+int				piece_stats(t_fillit *fill);
+int				algo(t_fillit *fill, char **map, t_piece **list, 
+				int size, int num_placed);
+char			**malloc_map(char **map, int size);
+
 #endif

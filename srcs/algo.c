@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 10:09:14 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 10:34:37 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int		valid_spot(char **map, int i, int j, t_piece *piece)
 {
-	return (0);
+	if (map[i][j] == '.')
+		 i = j;
+	return (piece->y);
 }
 
 int		place(char **map, int size, t_piece *piece)
@@ -39,7 +41,8 @@ int		place(char **map, int size, t_piece *piece)
 
 void	reset(t_fillit *fill)
 {
-
+	if (fill->size > 13)
+		fill->size++;
 }
 
 char	**malloc_map(char **map, int size)
@@ -53,7 +56,7 @@ char	**malloc_map(char **map, int size)
 		return (NULL);
 	while (++i < size)
 	{
-		if ((result[i] = ft_strdup(map[i]) == NULL)
+		if ((result[i] = ft_strdup(map[i])) == NULL)
 			return (NULL);
 	}
 	return (result);
@@ -77,7 +80,8 @@ char	**update_map(char **map, t_piece *piece, int size, char **result)
 				y = -1;
 				while (++y < piece->height)
 				{
-					ft_memmove(map[i] + j, piece[piece->y] + x, piece->width);
+					ft_memmove(map[i] + j, piece->[piece->y] + piece->x
+							, piece->width);
 				}
 			}
 		}
