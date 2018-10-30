@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 16:34:32 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 16:51:02 by dcordova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char	**update_map(char **map, t_piece *piece, int size, char **result)
 	int		i;
 	int		j;
 	int		y;
+	int		x;
 
 	i = -1;
 	result = malloc_map(map, size);
@@ -84,17 +85,19 @@ char	**update_map(char **map, t_piece *piece, int size, char **result)
 	{
 		j = -1;
 		while (++j < size)
-		{
 			if (valid_spot(map, i , j, piece) == 1)
 			{
 				y = -1;
 				while (++y < piece->height)
 				{
-					ft_memmove(result[i + y] + j, piece->map[piece->y + y] + 
-							piece->x, piece->width);
+					x = -1;
+					while(++x < piece->width)
+						if (piece->map[y + piece->y][x + piece->x] != '.')
+							result[i + y][j + x] = piece->map[y + piece->y][x + piece->x];
 				}
+				print_map(result);
+				return (result);
 			}
-		}
 	}
 	return (result);
 }
