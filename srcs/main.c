@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/28 22:09:30 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/29 15:20:51 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		get_piece(t_fillit *fill, int fd, char *line, t_piece *piece)
 	while (++i < 4)
 	{
 		j = -1;
+		get_next_line(fd, &line);
 		while (line[++j] != '\0')
 		{
 			if (j > 3 || (line[j] != '.' && line[j] != '#'))
@@ -43,13 +44,10 @@ int		get_piece(t_fillit *fill, int fd, char *line, t_piece *piece)
 		if (j != 4)
 			return (-1);
 		piece->map[i] = line;
-		get_next_line(fd, &line);
 	}
-	if (count != 4 || ft_strcmp(line, "") != 0)
-		return (-1);
-	free(line);
+	i = count != 4 ? -1 : 1;
 	fill->list[fill->count] = piece;
-	return (1);
+	return (i);
 }
 
 int		check_piece(t_fillit *f, t_piece *piece)
@@ -86,8 +84,10 @@ int		get_pieces(t_fillit *fill, int fd)
 	char	*line;
 	t_piece	*piece;
 
-	while (get_next_line(fd, &line) != 0)
+	while (fill->count == 0 || get_next_line(fd, &line) != 0)
 	{
+		if (fill->count != 0 && ft_strcmp(line, "") != 0)
+			return (-1);
 		piece = (t_piece *)malloc(sizeof(piece));
 		if (!piece)
 			return (-1);
