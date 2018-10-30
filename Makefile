@@ -6,7 +6,7 @@
 #    By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2018/10/30 15:14:31 by jdiaz            ###   ########.fr        #
+#    Updated: 2018/10/30 16:05:22 by dcordova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/
 SRCS_NAME = main.c \
 			piece_stats.c \
 			algo.c \
-			reset.c
+			reset.c \
+			print.c
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))
