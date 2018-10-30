@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:08:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/29 20:29:40 by dcordova         ###   ########.fr       */
+/*   Updated: 2018/10/29 20:34:35 by dcordova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef	struct		s_piece
 	int		placed;
 	int		width;
 	int		height;
+	int		y;
+	int		x;
 }					t_piece;
 
 typedef struct		s_fillit
