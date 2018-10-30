@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/29 23:53:44 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 10:07:45 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	reset(t_fillit *fill)
 
 }
 
-char	**update_map(char **map, t_piece *piece, int size)
+char	**malloc_map(char **map, int size)
 {
 	char	**result;
 	int		i;
@@ -52,8 +52,37 @@ char	**update_map(char **map, t_piece *piece, int size)
 	if (!result)
 		return (NULL);
 	while (++i < size)
-		if ((result[i] = (char *)malloc(size)) == NULL
-				return (NULL);
+	{
+		if ((result[i] = ft_strdup(map[i]) == NULL)
+			return (NULL);
+	}
+	return (result);
+}
+
+char	**update_map(char **map, t_piece *piece, int size, char **result)
+{
+	int		i;
+	int		j;
+	int		y;
+
+	i = -1;
+	result = malloc_map(map, size);
+	while (++i < size)
+	{
+		j = -1;
+		while (++j < size)
+		{
+			if (valid_spot(map, i , j, piece) == 1)
+			{
+				y = -1;
+				while (++y < piece->height)
+				{
+					ft_memmove(map[i] + j, piece[piece->y] + x, piece->width);
+				}
+			}
+		}
+	}
+	return (result);
 }
 
 int		algo(t_fillit *fill, char **map, t_piece **list, int size, int num_placed)
@@ -69,7 +98,7 @@ int		algo(t_fillit *fill, char **map, t_piece **list, int size, int num_placed)
 			if (place(map, size, list[i]) == 1)
 			{
 				list[i].placed = 1;
-				temp = update_map(map, list[i], size);
+				temp = update_map(map, list[i], size, temp);
 				if (algo(fill, temp, list, size, num_placed + 1) == 1)
 				{
 					return (1);
