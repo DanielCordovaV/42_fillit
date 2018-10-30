@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 10:34:40 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 15:09:35 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int		check_all(t_fillit *f)
 			n = -1;
 			printf("%s\n", f->list[i]->map[j]);
 		}
-		printf("\n");
+		printf("w:%d h:%d y:%d x:%d\n", f->list[i]->width, f->list[i]->height, f->list[i]->y, f->list[i]->x);
 	}
 	return (0);
 }
@@ -136,9 +136,11 @@ int		main(int argc, char **argv)
 	if (get_pieces(&fill, fd) == -1)
 		return (printf("error\n"));
 	close(fd);
+	fill.result = empty_map(2);
+	fill.size = 2;
+	piece_stats(&fill);
 	if (check_all(&fill) == -1)
 		return (-1);
-	fill.result = malloc_map(fill.result, 2);
-	algo(&fill, fill.result, fill.list, 2, 0);
+	algo(&fill, fill.result, fill.list, 0);
 	return (1);
 }

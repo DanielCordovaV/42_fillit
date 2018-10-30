@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 10:44:38 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 15:09:34 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		algo(t_fillit *fill, char **map, t_piece **list, int num_placed)
 	char	**temp;
 
 	i = 0;
-	printf("called algo: size: %d count: %d\n", fill->size, fill->count);
+	//printf("called algo: size: %d count: %d\n", fill->size, fill->count);
 	while (num_placed != fill->count && i < fill->count)
 	{
 		if (list[i]->placed == 0)
