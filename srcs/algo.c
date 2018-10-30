@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 10:34:37 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 10:44:38 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	**update_map(char **map, t_piece *piece, int size, char **result)
 				y = -1;
 				while (++y < piece->height)
 				{
-					ft_memmove(map[i] + j, piece->[piece->y] + piece->x
+					ft_memmove(map[i] + j, piece->map[piece->y] + piece->x
 							, piece->width);
 				}
 			}
@@ -89,36 +89,37 @@ char	**update_map(char **map, t_piece *piece, int size, char **result)
 	return (result);
 }
 
-int		algo(t_fillit *fill, char **map, t_piece **list, int size, int num_placed)
+int		algo(t_fillit *fill, char **map, t_piece **list, int num_placed)
 {
 	int		i;
 	char	**temp;
 
 	i = 0;
+	printf("called algo: size: %d count: %d\n", fill->size, fill->count);
 	while (num_placed != fill->count && i < fill->count)
 	{
 		if (list[i]->placed == 0)
 		{
-			if (place(map, size, list[i]) == 1)
+			if (place(map, fill->size, list[i]) == 1)
 			{
-				list[i].placed = 1;
-				temp = update_map(map, list[i], size, temp);
-				if (algo(fill, temp, list, size, num_placed + 1) == 1)
+				list[i]->placed = 1;
+				temp = update_map(map, list[i], fill->size, temp);
+				if (algo(fill, temp, list, num_placed + 1) == 1)
 				{
 					return (1);
 				}
-				free_map(temp);
-				list[i].placed = 0;
+				//free_map(temp);
+				list[i]->placed = 0;
 			}
 		}
 		i++;
 	}
 	if (num_placed == fill->count)
 	{
-		print_result(fill->result);
+		//print_result(fill->result);
 		return (1);
 	}
 	reset(fill);
-	algo(fill, fill->list, fill->size, 0);
+	algo(fill, fill->result, fill->list, 0);
 	return (-1);
 }
