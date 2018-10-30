@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 15:37:27 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 16:34:34 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,8 @@ int		main(int argc, char **argv)
 	if (get_pieces(&fill, fd) == -1)
 		return (printf("error\n"));
 	close(fd);
-	fill.result = new_map(2);
-	fill.size = 2;
+	fill.result = new_map(4);
+	fill.size = 4;
 	piece_stats(&fill);
 	if (check_all(&fill) == -1)
 		return (-1);

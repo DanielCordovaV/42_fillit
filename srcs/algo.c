@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 16:07:30 by dcordova         ###   ########.fr       */
+/*   Updated: 2018/10/30 16:34:32 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		valid_spot(char **map, int i, int j, t_piece *piece)
 	int		size;
 
 	size = ft_strlen(*map);
-	if (j + piece->width >= size || i + piece->height >= size)
+	if (j + piece->width > size || i + piece->height > size)
 		return (0);
 	n = -1;
 	while (++n < piece->height)
@@ -90,8 +90,8 @@ char	**update_map(char **map, t_piece *piece, int size, char **result)
 				y = -1;
 				while (++y < piece->height)
 				{
-					ft_memmove(map[i] + j, piece->map[piece->y] + piece->x
-							, piece->width);
+					ft_memmove(result[i + y] + j, piece->map[piece->y + y] + 
+							piece->x, piece->width);
 				}
 			}
 		}
@@ -105,7 +105,7 @@ int		algo(t_fillit *fill, char **map, t_piece **list, int num_placed)
 	char	**temp;
 
 	i = 0;
-	//printf("called algo: size: %d count: %d\n", fill->size, fill->count);
+	printf("called algo: size: %d count: %d n: %d\n", fill->size, fill->count, num_placed);
 	while (num_placed != fill->count && i < fill->count)
 	{
 		if (list[i]->placed == 0)
@@ -114,6 +114,8 @@ int		algo(t_fillit *fill, char **map, t_piece **list, int num_placed)
 			{
 				list[i]->placed = 1;
 				temp = update_map(map, list[i], fill->size, temp);
+				print_map(temp);
+				printf("\n");
 				if (algo(fill, temp, list, num_placed + 1) == 1)
 				{
 					return (1);
@@ -131,6 +133,7 @@ int		algo(t_fillit *fill, char **map, t_piece **list, int num_placed)
 		return (1);
 	}
 	reset(fill);
-	algo(fill, fill->result, fill->list, 0);
+	if (fill->size < 5)
+		algo(fill, fill->result, fill->list, 0);
 	return (-1);
 }
