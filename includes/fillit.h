@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:08:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/29 20:34:35 by dcordova         ###   ########.fr       */
+/*   Updated: 2018/10/29 21:44:37 by dcordova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ typedef struct		s_fillit
 	char	**result;
 	int		size;
 }					t_fillit;
+
+int					piece_stats(t_fillit *fill);
 #endif
