@@ -6,7 +6,7 @@
 /*   By: dcordova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 10:33:08 by dcordova          #+#    #+#             */
-/*   Updated: 2018/10/30 15:05:26 by dcordova         ###   ########.fr       */
+/*   Updated: 2018/10/30 15:16:22 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_map(char **map)
 	while (--size >= 0)
 	{
 		ft_strclr(map[size]);
-		free(map[i]);
+		free(map[size]);
 	}
 	free(map);
 	map = NULL;
@@ -39,6 +39,7 @@ char	**new_map(int size)
 		map[i] = ft_strnew(size);
 		ft_memset(map[i], '.', size);
 	}
+	return (map);
 }
 
 int		reset(t_fillit *f)

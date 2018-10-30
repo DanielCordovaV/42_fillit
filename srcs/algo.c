@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 15:09:34 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 15:15:25 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ int		place(char **map, int size, t_piece *piece)
 		}
 	}
 	return (0);
-}
-
-void	reset(t_fillit *fill)
-{
-	if (fill->size > 13)
-		fill->size++;
 }
 
 char	**malloc_map(char **map, int size)

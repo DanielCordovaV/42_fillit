@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:08:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 10:40:13 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 15:14:19 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ int				piece_stats(t_fillit *fill);
 int				algo(t_fillit *fill, char **map, t_piece **list,
 					int num_placed);
 char			**malloc_map(char **map, int size);
+void			free_map(char **map);
+char 			**new_map(int size);
+int				reset(t_fillit *f);
 
 #endif
