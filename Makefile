@@ -6,7 +6,7 @@
 #    By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2018/10/28 17:32:19 by jdiaz            ###   ########.fr        #
+#    Updated: 2018/10/29 23:12:35 by dcordova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ FLAGS = -Wall -Werror -Wextra
 INC = -I ./includes/ -I ./$(LIBFT_PATH)includes/
 
 SRCS_NAME = main.c \
+			piece_stats.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))
@@ -32,6 +33,10 @@ $(NAME): $(OBJ)
 	@echo "\033[32mBinary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
 
 all: $(NAME)
+
+deb:
+	@make -C $(LIBFT_PATH)
+	@gcc $(FLAGS) $(SRCS) $(INC) -L $(LIBFT_PATH) -lft -o $(NAME) -g -fsanitize=address
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p obj
@@ -45,7 +50,7 @@ clean:
 
 fclean: clean
 	@make -C $(LIBFT_PATH)/ fclean
-	@/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(NAME) $(NAME).dSYM
 	@echo "\033[31mBin \033[1;31m$(NAME)\033[1;0m\033[31m removed.\033[0m"
 
 re: fclean all

@@ -88,7 +88,7 @@ int		get_pieces(t_fillit *fill, int fd)
 	{
 		if (fill->count != 0 && ft_strcmp(line, "") != 0)
 			return (-1);
-		piece = (t_piece *)malloc(sizeof(piece));
+		piece = (t_piece *)malloc(sizeof(t_piece));
 		if (!piece)
 			return (-1);
 		if ((piece->map = (char **)malloc(sizeof(char *) * 4)) == NULL)
