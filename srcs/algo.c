@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 15:15:25 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 15:37:24 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,21 @@
 
 int		valid_spot(char **map, int i, int j, t_piece *piece)
 {
-	if (map[i][j] == '.')
-		 i = j;
-	return (piece->y);
+	int		n;
+	int		m;
+
+	n = -1;
+	while (++n < piece->height)
+	{
+		m = -1;
+		while (++m < piece->width)
+		{
+			if (map[i + n][j + m] != '.' && 
+					piece->map[piece->y + n][piece->x + m] != '.')
+				return(0);
+		}
+	}
+	return (1);
 }
 
 int		place(char **map, int size, t_piece *piece)
@@ -102,7 +114,7 @@ int		algo(t_fillit *fill, char **map, t_piece **list, int num_placed)
 				{
 					return (1);
 				}
-				//free_map(temp);
+				free_map(temp);
 				list[i]->placed = 0;
 			}
 		}
@@ -110,7 +122,7 @@ int		algo(t_fillit *fill, char **map, t_piece **list, int num_placed)
 	}
 	if (num_placed == fill->count)
 	{
-		//print_result(fill->result);
+		printf("done\n");
 		return (1);
 	}
 	reset(fill);
