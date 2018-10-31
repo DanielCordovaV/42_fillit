@@ -6,7 +6,7 @@
 /*   By: dcordova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 10:33:08 by dcordova          #+#    #+#             */
-/*   Updated: 2018/10/30 15:16:22 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 21:42:47 by dcordova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,18 @@ int		reset(t_fillit *f)
 		return (-1);
 	else
 		return (1);
+}
+
+void	free_all(t_fillit *fill)
+{
+	int	i;
+
+	i = -1;
+	while (++i < fill->count)
+	{
+		free_map(fill->list[i]->map);
+		free(fill->list[i]);
+	}
+	free_map(fill->result);
+	free(fill->list);
 }
