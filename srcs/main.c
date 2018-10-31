@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 16:34:34 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 20:01:41 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,26 +103,6 @@ int		get_pieces(t_fillit *fill, int fd)
 	return (1);
 }
 
-int		check_all(t_fillit *f)
-{
-	int		i;
-	int		j;
-	int		n;
-
-	i = -1;
-	while (++i < f->count)
-	{
-		j = -1;
-		while (++j < 4)
-		{
-			n = -1;
-			printf("%s\n", f->list[i]->map[j]);
-		}
-		printf("w:%d h:%d y:%d x:%d\n", f->list[i]->width, f->list[i]->height, f->list[i]->y, f->list[i]->x);
-	}
-	return (0);
-}
-
 int		main(int argc, char **argv)
 {
 	t_fillit	fill;
@@ -136,11 +116,11 @@ int		main(int argc, char **argv)
 	if (get_pieces(&fill, fd) == -1)
 		return (printf("error\n"));
 	close(fd);
-	fill.result = new_map(4);
-	fill.size = 4;
+	fill.result = new_map(3);
+	fill.size = 3;
 	piece_stats(&fill);
-	if (check_all(&fill) == -1)
-		return (-1);
-	algo(&fill, fill.result, fill.list, 0);
+	while (algs(&fill, fill.result, fill.list, 0) != 1)
+		reset(&fill);
+	//free_all(&fill);
 	return (1);
 }
