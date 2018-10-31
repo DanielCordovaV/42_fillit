@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 16:56:37 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/21 22:11:32 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/30 21:52:46 by dcordova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h>
-# define BUFF_SIZE 10
 # include <unistd.h>
+# define BUFF_SIZE 10
 
 typedef struct		s_list
 {

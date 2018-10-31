@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 21:14:08 by dcordova         ###   ########.fr       */
+/*   Updated: 2018/10/30 22:19:13 by dcordova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,15 +109,15 @@ int		main(int argc, char **argv)
 	int			fd;
 
 	if (argc != 2)
-		return (printf("print usage\n"));
+		return (ft_perror("usage: ./fillit target_file"));
 	fd = open(argv[1], O_RDONLY);
 	if (init(&fill) == -1 || fd == -1)
-		return (printf("error\n"));
+		return (ft_perror("error"));
 	if (get_pieces(&fill, fd) == -1)
-		return (printf("error\n"));
+		return (ft_perror("error"));
 	close(fd);
-	fill.result = new_map(3);
-	fill.size = 3;
+	fill.result = new_map(2);
+	fill.size = 2;
 	piece_stats(&fill);
 	while (algs(&fill, fill.result, fill.list, 0) != 1)
 		reset(&fill);

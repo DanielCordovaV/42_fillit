@@ -6,11 +6,17 @@
 /*   By: dcordova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 10:33:08 by dcordova          #+#    #+#             */
-/*   Updated: 2018/10/30 21:42:47 by dcordova         ###   ########.fr       */
+/*   Updated: 2018/10/30 22:18:26 by dcordova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
+
+int		ft_perror(char *s)
+{
+	ft_putendl(s);
+	return (-1);
+}
 
 void	free_map(char **map)
 {
