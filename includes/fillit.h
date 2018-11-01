@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:08:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/31 22:20:41 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 23:00:11 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ int				reset(t_fillit *f);
 int				print_map(char **map);
 int				valid_piece(t_piece *piece, int i, int j);
 int				get_size(int count);
+void			free_all(t_fillit *fill);
+int				ft_perror(char *s);
 
 #endif

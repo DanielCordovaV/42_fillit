@@ -6,25 +6,22 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 16:56:37 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/31 22:40:14 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 23:01:01 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE 5
-
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
 # include <strings.h>
+# define BUFF_SIZE 10
 
 typedef struct		s_list
 {

@@ -6,11 +6,17 @@
 /*   By: dcordova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 10:33:08 by dcordova          #+#    #+#             */
-/*   Updated: 2018/10/31 22:47:52 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 23:02:51 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
+
+int		ft_perror(char *s)
+{
+	ft_putendl(s);
+	return (-1);
+}
 
 void	free_map(char **map)
 {
@@ -57,4 +63,18 @@ int		reset(t_fillit *f)
 		return (-1);
 	else
 		return (1);
+}
+
+void	free_all(t_fillit *fill)
+{
+	int	i;
+
+	i = -1;
+	while (++i < fill->count)
+	{
+		free_map(fill->list[i]->map);
+		free(fill->list[i]);
+	}
+	free_map(fill->result);
+	free(fill->list);
 }

@@ -6,14 +6,18 @@
 /*   By: dcordova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:43:46 by dcordova          #+#    #+#             */
-/*   Updated: 2018/10/31 22:43:53 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 23:02:26 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
 
-static void	ft_getwidth(t_piece *piece, int y, int x)
+
+static void	ft_getx(t_piece *piece)
 {
+	int	x;
+	int	y;
+
 	x = -1;
 	while (++x < 4)
 	{
@@ -26,7 +30,15 @@ static void	ft_getwidth(t_piece *piece, int y, int x)
 			break ;
 		}
 	}
+}
+
+static void	ft_getwidth(t_piece *piece)
+{
+	int	y;
+	int	x;
+
 	x = 4;
+	ft_getx(piece);
 	while (--x >= piece->x)
 	{
 		y = 0;
@@ -40,8 +52,11 @@ static void	ft_getwidth(t_piece *piece, int y, int x)
 	}
 }
 
-static void	ft_getheight(t_piece *piece, int y, int x)
+static void	ft_gety(t_piece *piece)
 {
+	int	x;
+	int	y;
+
 	y = -1;
 	while (++y < 4)
 	{
@@ -54,6 +69,14 @@ static void	ft_getheight(t_piece *piece, int y, int x)
 			break ;
 		}
 	}
+}
+
+static void	ft_getheight(t_piece *piece)
+{
+	int	y;
+	int	x;
+
+	ft_gety(piece);
 	y = 4;
 	while (--y >= piece->y)
 	{
@@ -79,49 +102,4 @@ int			piece_stats(t_fillit *fill)
 		ft_getheight(fill->list[i], 0, 0);
 	}
 	return (0);
-}
-
-int			get_size(int count)
-{
-	int i;
-
-	count *= 4;
-	i = 1;
-	while (++i)
-	{
-		if (count >= 32 && i * i == count)
-			return (i + 1);
-		if (i * i >= count)
-			return (i);
-	}
-	return (0);
-}
-
-int			valid_piece(t_piece *piece, int i, int j)
-{
-	int count;
-	int curr;
-
-	count = 0;
-	while (++i < 4)
-	{
-		j = -1;
-		while (++j < 4)
-		{
-			if (piece->map[i][j] != '.')
-			{
-				curr = 0;
-				if (i != 0 && piece->map[i - 1][j] != '.')
-					curr++;
-				if (i != 3 && piece->map[i + 1][j] != '.')
-					curr++;
-				if (j != 0 && piece->map[i][j - 1] != '.')
-					curr++;
-				if (j != 3 && piece->map[i][j + 1] != '.')
-					curr++;
-				count += curr > 1 ? 1 : 0;
-			}
-		}
-	}
-	return (count > 0 ? 1 : -1);
 }
