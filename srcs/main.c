@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/31 22:58:56 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 23:23:04 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int		get_pieces(t_fillit *fill, int fd)
 		if ((piece->map = (char **)malloc(sizeof(char *) * 4)) == NULL)
 			return (-1);
 		piece->placed = 0;
+		if (fill->count != 0)
+			free(line);
 		if (get_piece(fill, fd, line, piece) == -1)
 			return (-1);
 		if (check_piece(fill, fill->list[fill->count]) == -1)
@@ -125,5 +127,6 @@ int		main(int argc, char **argv)
 	while (algs(&fill, fill.result, fill.list, 0) != 1)
 		reset(&fill);
 	free_all(&fill);
+	sleep(8);
 	return (1);
 }

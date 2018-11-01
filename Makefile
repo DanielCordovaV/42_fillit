@@ -6,7 +6,7 @@
 #    By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 19:22:08 by jdiaz             #+#    #+#              #
-#    Updated: 2018/10/30 16:05:22 by dcordova         ###   ########.fr        #
+#    Updated: 2018/10/31 23:05:55 by jdiaz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS_NAME = main.c \
 			piece_stats.c \
 			algo.c \
 			reset.c \
-			print.c
+			print.c \
+			tools.c
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 OBJ = $(addprefix $(OBJ_PATH), $(SRCS_NAME:.c=.o))

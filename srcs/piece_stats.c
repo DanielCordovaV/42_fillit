@@ -6,12 +6,11 @@
 /*   By: dcordova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:43:46 by dcordova          #+#    #+#             */
-/*   Updated: 2018/10/31 23:02:26 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 23:07:19 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
-
 
 static void	ft_getx(t_piece *piece)
 {
@@ -98,8 +97,8 @@ int			piece_stats(t_fillit *fill)
 	i = -1;
 	while (++i < fill->count)
 	{
-		ft_getwidth(fill->list[i], 0, 0);
-		ft_getheight(fill->list[i], 0, 0);
+		ft_getwidth(fill->list[i]);
+		ft_getheight(fill->list[i]);
 	}
 	return (0);
 }
