@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/31 23:23:04 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/11/01 14:35:07 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,5 @@ int		main(int argc, char **argv)
 	while (algs(&fill, fill.result, fill.list, 0) != 1)
 		reset(&fill);
 	free_all(&fill);
-	sleep(8);
 	return (1);
 }
