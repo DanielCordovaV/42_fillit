@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:33:54 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 20:01:39 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 22:40:39 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,36 +35,25 @@ int		valid_spot(char **map, int i, int j, t_piece *piece)
 	return (1);
 }
 
-void	update_map(char ***map, t_piece *piece, int size, int x)
+void	update_map(char ***map, t_piece *piece, int y_off, int x_off)
 {
 	int		i;
 	int		j;
-	int		y;
 
 	i = -1;
-	while (++i < size)
+	while (++i < piece->height)
 	{
 		j = -1;
-		while (++j < size)
+		while (++j < piece->width)
 		{
-			if (valid_spot(*map, i, j, piece) == 1)
-			{
-				y = -1;
-				while (++y < piece->height)
-				{
-					x = -1;
-					while (++x < piece->width)
-						if (piece->map[y + piece->y][x + piece->x] != '.')
-							(*map)[i + y][j + x] =
-								piece->map[y + piece->y][x + piece->x];
-				}
-				i = size + 1;
-			}
+			if (piece->map[i + piece->y][j + piece->x] != '.')
+				(*map)[i + y_off][j + x_off] =
+					piece->map[i + piece->y][j + piece->x];
 		}
 	}
 }
 
-void	remove_piece(char ***map, int *placed, int num_placed, t_fillit *f)
+void	remove_piece(char ***map, int *placed, char remove, t_fillit *f)
 {
 	int i;
 	int j;
@@ -75,7 +64,7 @@ void	remove_piece(char ***map, int *placed, int num_placed, t_fillit *f)
 		j = -1;
 		while (++j < f->size)
 		{
-			if ((*map)[i][j] == 'A' + num_placed)
+			if ((*map)[i][j] == remove)
 				(*map)[i][j] = '.';
 		}
 	}
@@ -101,10 +90,10 @@ int		algs(t_fillit *f, char **map, t_piece **list, int num_placed)
 				if (valid_spot(map, i, j, list[p]) == 1)
 				{
 					list[p]->placed = 1;
-					update_map(&map, list[p], f->size, 0);
+					update_map(&map, list[p], i, j);
 					if (algs(f, map, list, num_placed + 1) == 1)
 						return (1);
-					remove_piece(&map, &(list[p]->placed), num_placed, f);
+					remove_piece(&map, &(list[p]->placed), 'A' + p, f);
 				}
 		}
 	}

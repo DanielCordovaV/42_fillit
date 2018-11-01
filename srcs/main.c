@@ -6,11 +6,12 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 20:01:41 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 22:45:08 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
+#include <stdio.h>
 
 int		init(t_fillit *fill)
 {
@@ -98,6 +99,8 @@ int		get_pieces(t_fillit *fill, int fd)
 			return (-1);
 		if (check_piece(fill, fill->list[fill->count]) == -1)
 			return (-1);
+		if (valid_piece(piece, -1, -1) == -1)
+			return (-1);
 		fill->count++;
 	}
 	return (1);
@@ -116,11 +119,11 @@ int		main(int argc, char **argv)
 	if (get_pieces(&fill, fd) == -1)
 		return (printf("error\n"));
 	close(fd);
-	fill.result = new_map(3);
-	fill.size = 3;
+	fill.size = get_size(fill.count);
+	fill.result = new_map(fill.size);
 	piece_stats(&fill);
 	while (algs(&fill, fill.result, fill.list, 0) != 1)
 		reset(&fill);
-	//free_all(&fill);
+	sleep(8);
 	return (1);
 }

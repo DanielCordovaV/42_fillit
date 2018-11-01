@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 19:43:07 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/20 19:34:17 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 21:12:46 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_line(char **str, char **line, int fd, int r)
 
 int		get_next_line(const int fd, char **line)
 {
-	char static	*str[42];
+	char static	*str[4000];
 	char		buf[BUFF_SIZE + 1];
 	char		*temp;
 	int			r;

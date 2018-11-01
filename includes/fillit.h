@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:08:38 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/30 19:58:22 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/10/31 22:20:41 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,7 @@ void			free_map(char **map);
 char			**new_map(int size);
 int				reset(t_fillit *f);
 int				print_map(char **map);
+int				valid_piece(t_piece *piece, int i, int j);
+int				get_size(int count);
+
 #endif

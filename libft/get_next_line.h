@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_num_words.c                                     :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/20 15:00:43 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/10/20 15:04:21 by jdiaz            ###   ########.fr       */
+/*   Created: 2018/10/01 12:29:35 by jdiaz             #+#    #+#             */
+/*   Updated: 2018/10/20 12:50:21 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 5
 
-int		ft_num_words(char const *s)
-{
-	int len;
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft/libft.h"
+# include <string.h>
+# include <strings.h>
+# include <stdio.h>
 
-	len = 0;
-	while (*s != '\0')
-	{
-		len++;
-		while (*s != '\0' && (*s == ' ' || *s == '\t'))
-			s++;
-		while (*s == ' ' || *s == '\t')
-			s++;
-	}
-	return (len);
-}
+int		get_next_line(const int fd, char **line);
+
+#endif
