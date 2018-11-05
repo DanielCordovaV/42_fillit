@@ -6,7 +6,7 @@
 /*   By: jdiaz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 17:23:28 by jdiaz             #+#    #+#             */
-/*   Updated: 2018/11/01 14:35:07 by jdiaz            ###   ########.fr       */
+/*   Updated: 2018/11/04 21:12:05 by jdiaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,9 @@ int		main(int argc, char **argv)
 	fill.result = new_map(fill.size);
 	piece_stats(&fill);
 	while (algs(&fill, fill.result, fill.list, 0) != 1)
+	{
 		reset(&fill);
+	}
 	free_all(&fill);
 	return (1);
 }
